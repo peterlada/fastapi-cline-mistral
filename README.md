@@ -5,7 +5,7 @@ This is a simple FastAPI application with a single "hello world" endpoint. The a
 ## Prerequisites
 
 - Docker
-- Python 3.9
+- Python 3.13
 - `uv` package manager
 - `pytest` for testing
 - `ruff` for linting
@@ -67,7 +67,7 @@ The project includes GitHub Actions workflows for building and linting with `ruf
 
 ## Deployment
 
-To deploy the application to DigitalOcean, follow these steps:
+To deploy the application to DigitalOcean's App Platform, follow these steps:
 
 1. Build and push the Docker image to the DigitalOcean Container Registry:
 
@@ -78,14 +78,13 @@ docker push registry.digitalocean.com/your-registry/fastapi-app:latest
 
 Replace `your-registry` with your actual DigitalOcean Container Registry name.
 
-2. Deploy the Docker image to a DigitalOcean Kubernetes (DOKS) cluster:
+2. Deploy the Docker image to DigitalOcean's App Platform:
 
 ```bash
-kubectl apply -f k8s/deployment.yaml
-kubectl apply -f k8s/service.yaml
+doctl apps create --spec spec.yaml
 ```
 
-Ensure you have the `kubectl` CLI configured to interact with your DOKS cluster.
+Ensure you have the `doctl` CLI configured to interact with your DigitalOcean account.
 
 ## License
 
